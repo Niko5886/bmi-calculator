@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калкулатор за плочки за баня</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🛁 Калкулатор за плочки за баня</h1>
+            <p class="subtitle">Изчислете точния брой плочки за вашата баня</p>
+        </header>
+
+        <main>
+            <!-- Форма за въвеждане на данни -->
+            <section class="input-section">
+                <div class="input-group">
+                    <h2>📐 Параметри на банята</h2>
+                    
+                    <div class="input-card">
+                        <h3>Под</h3>
+                        <div class="input-row">
+                            <div class="input-field">
+                                <label for="floorWidth">Ширина (мм)</label>
+                                <input type="number" id="floorWidth" placeholder="2000" min="1">
+                            </div>
+                            <div class="input-field">
+                                <label for="floorLength">Дължина (мм)</label>
+                                <input type="number" id="floorLength" placeholder="3000" min="1">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="input-card">
+                        <h3>Плочки за под</h3>
+                        <div class="input-row">
+                            <div class="input-field">
+                                <label for="floorTileWidth">Ширина (мм)</label>
+                                <input type="number" id="floorTileWidth" placeholder="300" min="1">
+                            </div>
+                            <div class="input-field">
+                                <label for="floorTileLength">Дължина (мм)</label>
+                                <input type="number" id="floorTileLength" placeholder="300" min="1">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="input-card">
+                        <h3>Стени</h3>
+                        <div class="input-row">
+                            <div class="input-field">
+                                <label for="wallHeight">Височина (мм)</label>
+                                <input type="number" id="wallHeight" placeholder="2500" min="1">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="input-card">
+                        <h3>Плочки за стени</h3>
+                        <div class="input-row">
+                            <div class="input-field">
+                                <label for="wallTileWidth">Ширина (мм)</label>
+                                <input type="number" id="wallTileWidth" placeholder="250" min="1">
+                            </div>
+                            <div class="input-field">
+                                <label for="wallTileHeight">Височина (мм)</label>
+                                <input type="number" id="wallTileHeight" placeholder="400" min="1">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="input-card">
+                        <h3>Врата</h3>
+                        <div class="input-row">
+                            <div class="input-field">
+                                <label for="doorWidth">Ширина (мм)</label>
+                                <input type="number" id="doorWidth" placeholder="800" min="1">
+                            </div>
+                            <div class="input-field">
+                                <label for="doorHeight">Височина (мм)</label>
+                                <input type="number" id="doorHeight" placeholder="2000" min="1">
+                            </div>
+                        </div>
+                    </div>
+
+                    <button id="calculateBtn" class="calculate-btn">Изчисли</button>
+                </div>
+            </section>
+
+            <!-- Резултати -->
+            <section class="results-section" id="resultsSection" style="display: none;">
+                <h2>📊 Резултати</h2>
+                <div class="results-grid">
+                    <div class="result-card">
+                        <div class="result-icon">🟦</div>
+                        <div class="result-content">
+                            <h3>Плочки за под</h3>
+                            <p class="result-number" id="floorTilesResult">0</p>
+                            <p class="result-label">плочки</p>
+                            <p class="result-detail" id="floorAreaResult"></p>
+                        </div>
+                    </div>
+                    <div class="result-card">
+                        <div class="result-icon">🟨</div>
+                        <div class="result-content">
+                            <h3>Плочки за стени</h3>
+                            <p class="result-number" id="wallTilesResult">0</p>
+                            <p class="result-label">плочки</p>
+                            <p class="result-detail" id="wallAreaResult"></p>
+                        </div>
+                    </div>
+                    <div class="result-card highlight">
+                        <div class="result-icon">📦</div>
+                        <div class="result-content">
+                            <h3>Общо плочки</h3>
+                            <p class="result-number" id="totalTilesResult">0</p>
+                            <p class="result-label">плочки</p>
+                            <p class="result-detail">с 10% отпадък</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Визуализация -->
+            <section class="visualization-section" id="visualizationSection" style="display: none;">
+                <h2>🎨 Визуализация</h2>
+                <div class="visualization-container">
+                    <div class="floor-plan">
+                        <h3>Под</h3>
+                        <canvas id="floorCanvas"></canvas>
+                        <p class="canvas-label" id="floorLabel"></p>
+                    </div>
+                    <div class="walls-plan">
+                        <h3>Стени</h3>
+                        <div class="walls-grid">
+                            <div class="wall-view">
+                                <p class="wall-title">Стена 1 (Дължина)</p>
+                                <canvas id="wall1Canvas"></canvas>
+                                <p class="canvas-label" id="wall1Label"></p>
+                            </div>
+                            <div class="wall-view">
+                                <p class="wall-title">Стена 2 (Ширина)</p>
+                                <canvas id="wall2Canvas"></canvas>
+                                <p class="canvas-label" id="wall2Label"></p>
+                            </div>
+                            <div class="wall-view">
+                                <p class="wall-title">Стена 3 (Дължина)</p>
+                                <canvas id="wall3Canvas"></canvas>
+                                <p class="canvas-label" id="wall3Label"></p>
+                            </div>
+                            <div class="wall-view">
+                                <p class="wall-title">Стена 4 (Ширина с врата)</p>
+                                <canvas id="wall4Canvas"></canvas>
+                                <p class="canvas-label" id="wall4Label"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>💡 Забележка: Изчисленията включват 10% отпадък за рязане и полагане</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

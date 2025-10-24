@@ -1,0 +1,401 @@
+/* Основни стилове и нулиране */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #2ecc71;
+    --accent-color: #e74c3c;
+    --dark-bg: #2c3e50;
+    --light-bg: #ecf0f1;
+    --card-bg: #ffffff;
+    --text-dark: #2c3e50;
+    --text-light: #7f8c8d;
+    --border-color: #bdc3c7;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: var(--text-dark);
+    line-height: 1.6;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: var(--card-bg);
+    border-radius: 20px;
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+}
+
+/* Хедър */
+header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 25px 20px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+
+.subtitle {
+    font-size: 0.95rem;
+    opacity: 0.9;
+}
+
+/* Основна секция */
+main {
+    padding: 20px;
+}
+
+/* Секция за въвеждане */
+.input-section {
+    margin-bottom: 25px;
+}
+
+.input-group h2 {
+    color: var(--dark-bg);
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    border-bottom: 3px solid var(--primary-color);
+    padding-bottom: 8px;
+}
+
+.input-card {
+    background: var(--light-bg);
+    border-radius: 12px;
+    padding: 18px;
+    margin-bottom: 15px;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.input-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 12px;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+}
+
+.input-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.input-field {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-field label {
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: var(--text-dark);
+    font-size: 0.9rem;
+}
+
+.input-field input {
+    padding: 10px 12px;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 0.95rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    background: white;
+}
+
+.input-field input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+.input-field input::placeholder {
+    color: var(--text-light);
+}
+
+/* Бутон за изчисление */
+.calculate-btn {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, var(--secondary-color) 0%, #27ae60 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: var(--shadow);
+}
+
+.calculate-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.calculate-btn:active {
+    transform: translateY(0);
+}
+
+/* Секция с резултати */
+.results-section {
+    margin-bottom: 25px;
+    animation: fadeIn 0.5s ease;
+}
+
+.results-section.hidden {
+    display: none;
+}
+
+.results-section h2 {
+    color: var(--dark-bg);
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    border-bottom: 3px solid var(--secondary-color);
+    padding-bottom: 8px;
+}
+
+.results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+}
+
+.result-card {
+    background: var(--light-bg);
+    border-radius: 12px;
+    padding: 18px;
+    box-shadow: var(--shadow);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.result-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+}
+
+.result-card.highlight {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.result-card.highlight .result-number,
+.result-card.highlight h3,
+.result-card.highlight .result-label,
+.result-card.highlight .result-detail {
+    color: white;
+}
+
+.result-icon {
+    font-size: 2.5rem;
+    line-height: 1;
+}
+
+.result-content {
+    flex: 1;
+}
+
+.result-content h3 {
+    font-size: 0.95rem;
+    margin-bottom: 6px;
+    color: var(--text-dark);
+    font-weight: 600;
+}
+
+.result-number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    line-height: 1;
+    margin-bottom: 4px;
+}
+
+.result-label {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    margin-bottom: 4px;
+}
+
+.result-detail {
+    font-size: 0.8rem;
+    color: var(--text-light);
+}
+
+/* Секция за визуализация */
+.visualization-section {
+    animation: fadeIn 0.5s ease;
+}
+
+.visualization-section.hidden {
+    display: none;
+}
+
+.visualization-section h2 {
+    color: var(--dark-bg);
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    border-bottom: 3px solid var(--accent-color);
+    padding-bottom: 8px;
+}
+
+.visualization-container {
+    display: grid;
+    gap: 20px;
+}
+
+.floor-plan,
+.walls-plan {
+    background: var(--light-bg);
+    border-radius: 12px;
+    padding: 18px;
+    box-shadow: var(--shadow);
+}
+
+.floor-plan h3,
+.walls-plan h3 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+.walls-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 15px;
+}
+
+.wall-view {
+    background: white;
+    padding: 12px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.wall-title {
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+canvas {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    background: white;
+    margin-bottom: 8px;
+}
+
+.canvas-label {
+    text-align: center;
+    color: var(--text-light);
+    font-size: 0.8rem;
+    margin-top: 8px;
+}
+
+/* Футър */
+footer {
+    background: var(--light-bg);
+    padding: 15px 20px;
+    text-align: center;
+    color: var(--text-light);
+    border-top: 1px solid var(--border-color);
+    font-size: 0.9rem;
+}
+
+/* Анимации */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Респонсивен дизайн */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    header {
+        padding: 30px 20px;
+    }
+
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+
+    main {
+        padding: 20px;
+    }
+
+    .input-row {
+        grid-template-columns: 1fr;
+    }
+
+    .results-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .walls-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .result-number {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    .input-card,
+    .result-card,
+    .floor-plan,
+    .walls-plan {
+        padding: 15px;
+    }
+
+    .calculate-btn {
+        font-size: 1rem;
+        padding: 15px;
+    }
+}
