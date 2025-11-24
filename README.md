@@ -8,3 +8,9 @@ BMI Calculator
 index.html — основна HTML страница
 style.css — стилове
 script.js — логика за изчисление и показване на резултата
+
+Можеш да тестваш калкулатора директно в браузъра си:
+
+### 🔗 Виж живото демо 🚀  https://niko5886.github.io/bmi-calculator/
+
+
